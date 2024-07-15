@@ -19,7 +19,7 @@ const calculateShipping = async (
   reply: FastifyReply
 ) => {
   const apiUrl =
-    "https://sandbox.melhorenvio.com.br/api/v2/me/shipment/calculate";
+    "https://melhorenvio.com.br/api/v2/me/shipment/calculate";
 
   try {
     const apiResponse = await fetch(apiUrl, {
