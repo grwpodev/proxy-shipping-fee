@@ -26,7 +26,7 @@ const calculateShipping = async (
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accepts: "application/json",
+        Accept: "application/json",
         Authorization: `Bearer ${process.env.MELHOR_ENVIO_AUTH_TOKEN}`,
         "User-Agent": "Aplicação bruno@woley.com",
       },
