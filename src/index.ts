@@ -2,6 +2,9 @@ import fastify, { FastifyReply, FastifyRequest } from "fastify";
 import cors from "@fastify/cors";
 import "dotenv/config";
 
+const port = process.env.PORT || 3000;
+const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
+
 const app = fastify();
 
 const CORS = {
@@ -43,7 +46,7 @@ const calculateShipping = async (
 
 app.post("/proxy/shipment/calculate", calculateShipping);
 
-app.listen(process.env.PORT || 3000, (err, address) => {
+app.listen(port, host, (err, address) => {
   if (err) console.error(err);
   console.log(`app listening at ${address}`);
 });
