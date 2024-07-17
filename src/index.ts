@@ -43,7 +43,7 @@ const calculateShipping = async (
 
 app.post("/proxy/shipment/calculate", calculateShipping);
 
-app.listen({ port: process.env.PORT }, (err, address) => {
+app.listen({ port: process.env.PORT || 3000 }, (err, address) => {
   if (err) console.error(err);
   console.log(`app listening at ${address}`);
 });
