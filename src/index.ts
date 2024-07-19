@@ -12,10 +12,16 @@ const CORS = {
   methods: ["GET", "POST"],
   preflightContinue: false,
   optionsSuccessStatus: 204,
+  allowedHeaders: ["Content-Type", "Authorization", "User-Agent"],
   exposedHeaders: "Authorization",
 };
 
 app.register(cors, CORS);
+
+app.addHook('onRequest', (request, reply, done) => {
+  console.log(`Incoming request: ${request.method} ${request.url}`);
+  done();
+});
 
 const calculateShipping = async (
   request: FastifyRequest,
@@ -35,6 +41,10 @@ const calculateShipping = async (
       },
       body: JSON.stringify(request.body),
     });
+    
+    if (!apiResponse.ok) {
+      throw new Error(`API response not ok: ${apiResponse.statusText}`);
+    }
 
     const data = await apiResponse.json();
     reply.send(data);
