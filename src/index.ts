@@ -18,11 +18,6 @@ const CORS = {
 
 app.register(cors, CORS);
 
-app.addHook('onRequest', (request, reply, done) => {
-  console.log(`Incoming request: ${request.method} ${request.url}`);
-  done();
-});
-
 const calculateShipping = async (
   request: FastifyRequest,
   reply: FastifyReply
