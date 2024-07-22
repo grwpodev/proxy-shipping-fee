@@ -8,7 +8,7 @@ const host = "RENDER" in process.env ? `0.0.0.0` : `localhost`;
 const app = fastify();
 
 const CORS = {
-  origin: false, // Disable cors
+  origin: "*",
   methods: ["GET", "POST"],
   preflightContinue: false,
   optionsSuccessStatus: 204,
