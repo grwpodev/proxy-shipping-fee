@@ -17,6 +17,7 @@ const CORS = {
     "Content-Type",
     "Authorization",
     "User-Agent",
+    "Authorization",
     "Access-Control-Allow-Origin",
   ],
   exposedHeaders: "Authorization",
@@ -46,6 +47,10 @@ const calculateShipping = async (
     if (!apiResponse.ok) {
       throw new Error(`API response not ok: ${apiResponse.statusText}`);
     }
+
+    reply.header("access-control-allow-origin", "*");
+    reply.header("access-control-allow-methods", "GET, POST, OPTIONS");
+    reply.header("access-control-allow-headers", "*");
 
     const data = await apiResponse.json();
     reply.send(data);
