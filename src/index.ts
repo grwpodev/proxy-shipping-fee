@@ -8,18 +8,12 @@ const host = "RENDER" in process.env ? `0.0.0.0` : `localhost`;
 const app = fastify();
 
 const CORS = {
-  origin: "https://www.woley.com.br",
-  "Access-Control-Allow-Origin": "*",
+  origin: "*",
   methods: ["GET", "POST", "OPTIONS"],
   strictPreflight: false,
   preflightContinue: false,
   optionsSuccessStatus: 204,
-  allowedHeaders: [
-    "Content-Type",
-    "Authorization",
-    "User-Agent",
-    "Access-Control-Allow-Origin",
-  ],
+  allowedHeaders: ["Content-Type", "Authorization", "User-Agent"],
   exposedHeaders: "Authorization",
 };
 
