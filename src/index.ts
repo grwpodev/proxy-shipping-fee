@@ -10,8 +10,6 @@ const app = fastify();
 const CORS = {
   origin: "*",
   methods: ["GET", "POST", "OPTIONS"],
-  strictPreflight: false,
-  preflightContinue: false,
   optionsSuccessStatus: 204,
   allowedHeaders: [
     "Content-Type",
@@ -48,9 +46,13 @@ const calculateShipping = async (
       throw new Error(`API response not ok: ${apiResponse.statusText}`);
     }
 
-    reply.header("access-control-allow-origin", "*");
-    reply.header("access-control-allow-methods", "GET, POST, OPTIONS");
-    reply.header("access-control-allow-headers", "*");
+    reply.header("Access-control-allow-origin", "*");
+    reply.header("Access-control-allow-credentials", "true");
+    reply.header("Access-control-allow-methods", "GET, POST, OPTIONS");
+    reply.header(
+      "Access-control-allow-headers",
+      "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
+    );
 
     const data = await apiResponse.json();
     reply.send(data);
