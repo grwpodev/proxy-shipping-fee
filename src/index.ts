@@ -9,6 +9,7 @@ const app = fastify();
 
 const CORS = {
   origin: "https://www.woley.com.br",
+  "Access-Control-Allow-Origin": "*",
   methods: ["GET", "POST", "OPTIONS"],
   strictPreflight: false,
   preflightContinue: false,
