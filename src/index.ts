@@ -15,6 +15,7 @@ const CORS = {
   optionsSuccessStatus: 204,
   allowedHeaders: ["Content-Type", "Authorization", "User-Agent"],
   exposedHeaders: "Authorization",
+  "Access-Control-Allow-Origin": "*",
 };
 
 app.register(cors, CORS);
@@ -39,9 +40,10 @@ const calculateShipping = async (
 
     if (!apiResponse.ok) {
       throw new Error(`API response not ok: ${apiResponse.statusText}`);
-    } else if (apiResponse) {
-      await reply.send(apiResponse);
     }
+
+    const data = await apiResponse.json();
+    reply.send(data);
   } catch (error) {
     console.log(error);
     reply.status(500).send({ error });
