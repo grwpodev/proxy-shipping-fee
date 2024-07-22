@@ -9,7 +9,7 @@ const app = fastify();
 
 const CORS = {
   origin: "*",
-  methods: ["GET", "POST"],
+  methods: ["GET", "POST", "OPTIONS"],
   preflightContinue: false,
   optionsSuccessStatus: 204,
   allowedHeaders: ["Content-Type", "Authorization", "User-Agent"],
