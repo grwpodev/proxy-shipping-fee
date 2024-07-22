@@ -13,7 +13,12 @@ const CORS = {
   strictPreflight: false,
   preflightContinue: false,
   optionsSuccessStatus: 204,
-  allowedHeaders: ["Content-Type", "Authorization", "User-Agent"],
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "User-Agent",
+    "Access-Control-Allow-Origin",
+  ],
   exposedHeaders: "Authorization",
   "Access-Control-Allow-Origin": "*",
 };
