@@ -39,9 +39,9 @@ const calculateShipping = async (
 
     if (!apiResponse.ok) {
       throw new Error(`API response not ok: ${apiResponse.statusText}`);
+    } else if (apiResponse) {
+      await reply.send(apiResponse);
     }
-
-    reply.send(apiResponse);
   } catch (error) {
     console.log(error);
     reply.status(500).send({ error });
