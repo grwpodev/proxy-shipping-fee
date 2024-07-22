@@ -46,13 +46,15 @@ const calculateShipping = async (
       throw new Error(`API response not ok: ${apiResponse.statusText}`);
     }
 
-    reply.header("Access-control-allow-origin", "*");
-    reply.header("Access-control-allow-credentials", "true");
-    reply.header("Access-control-allow-methods", "GET, POST, OPTIONS");
+    reply.header("Access-Control-Allow-Origin", "*");
+    reply.header("Access-Control-Allow-Credentials", "true");
+    reply.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
     reply.header(
-      "Access-control-allow-headers",
+      "Access-Control-Allow-Headers",
       "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
     );
+    reply.header("Accept", "application/json");
+    reply.header("Origin", "*");
 
     const data = await apiResponse.json();
     reply.send(data);
